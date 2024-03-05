@@ -24,17 +24,20 @@
                         <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th scope="col">Nama Kategori</th>
+                                <th scope="col">Id Keranjang</th>
+                                <th scope="col">Id Pengguna</th>
+                                <th scope="col">Id Barang</th>
+                                <th scope="col">QTY</th>
+                                <th scope="col">AKSI</th>
                               </tr>
                             </thead>
                             <tbody>
-                              @forelse ($tb_kategoris as $tb_kategori)
+                              @forelse ($keranjangs as $keranjang)
                                 <tr>
-                                    <td class="text-center">
-                                        <img src="{{ asset('/storage/posts/'.$post->image) }}" class="rounded" style="width: 150px">
-                                    </td>
-                                    <td>{{ $post->title }}</td>
-                                    <td>{!! $post->content !!}</td>
+                                    <td>{{ $keranjang->id_keranjang }}</td>
+                                    <td>{{ $keranjang->id_pengguna }}</td>
+                                    <td>{{ $keranjang->id_barang }}</td>
+                                    <td>{{ $keranjang->qty }}</td>
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('posts.destroy', $post->id) }}" method="POST">
                                             <a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-dark">SHOW</a>
@@ -52,7 +55,7 @@
                               @endforelse
                             </tbody>
                           </table>  
-                          {{ $tb_kategoris->links() }}
+                          {{ $keranjangs->links() }}
                     </div>
                 </div>
             </div>
